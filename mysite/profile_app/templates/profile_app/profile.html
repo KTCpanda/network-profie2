@@ -15,8 +15,8 @@
             --bg-color-start: #2a52be; /* 明るめの青 */
             --bg-color-end: #4b6cb7;   /* やや濃い青 */
             --card-bg-color: rgba(255, 255, 255, 0.1); /* カード背景を明るく透明に */
-            --primary-text-color: #ffffff; /* 白いテキスト */
-            --secondary-text-color: #e0e0e0;
+            --primary-text-color: #ffffff; /* アイコン下の名前 */
+            --secondary-text-color: #4f0bfa; /* VRChat ID color */
             --accent-color: #8c7aea; /* アクセントカラーを明るい紫に */
             --accent-glow: rgba(140, 122, 234, 0.7); /* グローも明るく */
             --border-color: rgba(255, 255, 255, 0.2); /* カードのボーダー色 */
@@ -255,7 +255,7 @@
                 {% endif %}
             </div>
             <h1>{{ profile.name }}</h1>
-            <p>VRChat: {{ profile.avatar_name }}</p>
+            <p>VRChat_ID: {{ profile.avatar_name }}</p> <!-- VRchatIDを変更するための場所 -->
         </header>
 
         <main>
