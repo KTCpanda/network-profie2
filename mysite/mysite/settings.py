@@ -28,9 +28,14 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # ← この行を追加
 SECRET_KEY = 'django-insecure-bz6=rzqa+#n(y@o&($9b57gu-u4(yj1@qdxge4x5*04vfp+ey)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = 'RENDER' not in os.environ # Render以外ではDEBUGモードを有効に
 
 ALLOWED_HOSTS = ['network-profie2.onrender.com', '127.0.0.1', 'localhost']
+
+if 'RENDER' in os.environ:
+    ALLOWED_HOSTS.append(os.environ.get('RENDER_EXTERNAL_HOSTNAME'))
+
 
 
 # Application definition
@@ -78,17 +83,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
-}
+if 'RENDER' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL')
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
