@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }}の自己紹介サイト</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color-start: #2a52be; /* 明るめの青 */
+            --bg-color-end: #4b6cb7;   /* やや濃い青 */
+            --card-bg-color: rgba(255, 255, 255, 0.1); /* カード背景を明るく透明に */
+            --primary-text-color: #ffffff; /* 白いテキスト */
+            --secondary-text-color: #e0e0e0;
+            --accent-color: #8c7aea; /* アクセントカラーを明るい紫に */
+            --accent-glow: rgba(140, 122, 234, 0.7); /* グローも明るく */
+            --border-color: rgba(255, 255, 255, 0.2); /* カードのボーダー色 */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            /* 初期背景画像 */
+            background: url("{% static 'images/VRchat_sky.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 背景を固定 */
+            color: var(--primary-text-color);
+            transition: background-image 0.8s ease-in-out; /* 背景切り替えアニメーション */
+        }
+
+        /* 背景切り替え用のクラス */
+        body.background-changed {
+            background-image: url("{% static 'images/VRchat_sky2.jpg' %}");
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* --- ヘッダー --- */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .top-image-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 25px var(--accent-glow); /* グローを強めに */
+        }
+
+        .top-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+            color: var(--primary-text-color);
+            text-shadow: 0 0 15px var(--accent-glow); /* テキストグローも強化 */
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: var(--secondary-text-color);
+        }
+
+        /* --- コンテンツカード --- */
+        .card {
+            background-color: var(--card-bg-color); /* 透明なカード背景 */
+            border-radius: 25px; /* 角をさらに丸く */
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color); /* 境界線も明るく */
+            backdrop-filter: blur(20px); /* すりガラス効果を強く */
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4); /* 影を強調 */
+        }
+
+        .card h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: var(--primary-text-color);
+        }
+        
+        /* --- スマートフォン対応 --- */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .top-image-container {
+                width: 140px;
+                height: 140px;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="top-image-container">
+                {% if profile.top_image %}
+                    <img src="{{ profile.top_image.url }}" alt="トップ画像" class="top-image">
+                {% else %}
+                    <img src="{% static 'images/vrchat_hatumimi.png' %}" alt="デフォルト画像" class="top-image">
+                {% endif %}
+            </div>
+            <h1>{{ profile.name }}</h1>
+            <p>VRChat: {{ profile.avatar_name }}</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>ABOUT ME - 自己紹介</h2>
+                <p>{{ profile.introduction | linebreaksbr }}</p>
+            </section>
+            
+            <section class="card">
+                <h2>WHY I STARTED VRCHAT - VRChatを始めた理由</h2>
+                <p>{{ profile.reason_for_vrc | linebreaksbr }}</p>
+            </section>
+
+            <section class="card">
+                <h2>HOBBIES - 趣味</h2>
+                <p>{{ profile.hobbies | linebreaksbr }}</p>
+            </section>
+
+            <section class="card" id="favorite-things">
+                <h2>FAVORITE THINGS - 好きなこと</h2>
+                <p>{{ profile.favorite_things | linebreaksbr }}</p>
+            </section>
+
+            <section class="card">
+                <h2>MY GOAL - 目指している仕事</h2>
+                <p>{{ profile.career_goal }}</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 背景切り替え機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const favoriteThingsSection = document.getElementById('favorite-things');
+            const body = document.body;
+            
+            // Intersection Observer を使用してセクションが画面に入ったかを監視
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 「好きなこと」セクションが画面に入った時
+                        body.classList.add('background-changed');
+                    } else {
+                        // 「好きなこと」セクションが画面から出た時
+                        body.classList.remove('background-changed');
+                    }
+                });
+            }, {
+                threshold: 0.3 // セクションの30%が表示されたら切り替え
+            });
+            
+            // 監視開始
+            observer.observe(favoriteThingsSection);
+        });
+    </script>
+</body>
+</html>
