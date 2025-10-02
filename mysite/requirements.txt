@@ -1,7 +1,9 @@
-﻿asgiref
+﻿asgiref==3.9.2
 attrs==25.3.0
+botocore==1.40.43
 certifi==2025.7.14
 cffi==1.17.1
+channels==4.3.1
 channels_redis==4.3.0
 charset-normalizer==3.4.2
 cloudinary==1.44.1
@@ -10,6 +12,7 @@ Django==5.2.1
 django-cloudinary-storage==0.3.0
 gunicorn==23.0.0
 idna==3.10
+jmespath==1.0.1
 msgpack==1.1.1
 packaging==25.0
 pillow==11.3.0
@@ -18,9 +21,11 @@ pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycparser==2.22
 pygame==2.6.1
+python-dateutil==2.9.0.post0
 python-dotenv==1.1.1
 redis==6.4.0
 requests==2.32.4
+s3transfer==0.14.0
 setuptools==80.9.0
 six==1.17.0
 sqlparse==0.5.3
