@@ -6,10 +6,8 @@ cffi==1.17.1
 channels==4.3.1
 channels_redis==4.3.0
 charset-normalizer==3.4.2
-cloudinary==1.44.1
 dj-database-url==3.0.1
 Django==5.2.1
-django-cloudinary-storage==0.3.0
 gunicorn==23.0.0
 idna==3.10
 jmespath==1.0.1

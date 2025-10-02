@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_app',
-    'cloudinary',
-    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -150,23 +148,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Cloudinary settings
-# settings.py
-CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL') # ← Renderに設定された値を読み取るだけ
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 # mysite/settings.py の一番下に追加
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-if 'RENDER' in os.environ:
-    # 本番環境のメディア設定
-    MEDIA_URL = '/media/' # CloudinaryがこのURLをベースにすることがある
-else:
-    # ローカル環境のメディア設定
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
+# メディアファイルの設定
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
