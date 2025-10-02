@@ -162,6 +162,14 @@
         .card p {
             color: var(--primary-text-color);
         }
+
+        .hobbies-card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hobbies-card:hover {
+            transform: translateY(-5px);
+        }
         
         /* --- フッター --- */
         .footer {
@@ -269,9 +277,11 @@
                 <p>{{ profile.reason_for_vrc | linebreaksbr }}</p>
             </section>
 
-            <section class="card">
-                <h2>HOBBIES - 趣味</h2>
-                <p>{{ profile.hobbies | linebreaksbr }}</p>
+            <section class="card hobbies-card">
+                <a href="{% url 'profile_app:shumi' %}" style="text-decoration: none; color: inherit;">
+                    <h2>HOBBIES - 趣味</h2>
+                    <p>{{ profile.hobbies | linebreaksbr }}</p>
+                </a>
             </section>
 
             <section class="card" id="favorite-things">

@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣味 - 服のコレクション</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color-start: #2a52be;
+            --bg-color-end: #4b6cb7;
+            --card-bg-color: rgba(255, 255, 255, 0.1);
+            --primary-text-color: #ffffff;
+            --secondary-text-color: #4f0bfa;
+            --accent-color: #8c7aea;
+            --accent-glow: rgba(140, 122, 234, 0.7);
+            --border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'images/VRchat_sky2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--primary-text-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8em;
+            margin: 0;
+            color: var(--primary-text-color);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: var(--accent-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .clothing-item {
+            background-color: var(--card-bg-color);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .clothing-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--accent-glow);
+        }
+
+        .clothing-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .clothing-info {
+            padding: 20px;
+        }
+
+        .clothing-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .clothing-info p {
+            color: var(--primary-text-color);
+            font-size: 0.95em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #a192f0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>MY CLOSET</h1>
+            <p>お気に入りの服コレクション</p>
+        </header>
+
+        <main>
+            <div class="gallery">
+                <!-- 服のアイテム 1 -->
+                <div class="clothing-item">
+                    <img src="{% static 'images/placeholder_clothing1.jpg' %}" alt="服の画像1" class="clothing-image">
+                    <div class="clothing-info">
+                        <h3>和装モダン</h3>
+                        <p>これはお気に入りの和装モダンです。伝統的なデザインに現代的な要素が加わっています。着心地も最高です。</p>
+                    </div>
+                </div>
+
+                <!-- 服のアイテム 2 -->
+                <div class="clothing-item">
+                    <img src="{% static 'images/placeholder_clothing2.jpg' %}" alt="服の画像2" class="clothing-image">
+                    <div class="clothing-info">
+                        <h3>サイバーパンクジャケット</h3>
+                        <p>ネオンが輝くサイバーパンク風のジャケット。VRChatのクラブイベントに着ていくことが多いです。</p>
+                    </div>
+                </div>
+
+                <!-- 服のアイテム 3 -->
+                <div class="clothing-item">
+                    <img src="{% static 'images/placeholder_clothing3.jpg' %}" alt="服の画像3" class="clothing-image">
+                    <div class="clothing-info">
+                        <h3>地雷系コーデ</h3>
+                        <p>黒を基調とした地雷系ファッション。レースやリボンがたくさんついていて、かわいいけど少しダークな雰囲気が好きです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="{% url 'profile_app:profile' %}" class="back-link">プロフィールに戻る</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

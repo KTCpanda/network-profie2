@@ -35,3 +35,6 @@ def profile_view(request):
     
     # 'profile'という名前で、上の my_profile の情報をHTMLに渡します
     return render(request, 'profile_app/profile.html', {'profile': my_profile})
+
+def shumi_view(request):
+    return render(request, 'profile_app/shumi.html')
