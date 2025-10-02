@@ -143,8 +143,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Media files (user uploaded files)
 # https://docs.djangoproject.com/en/5.2/topics/files/
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -163,3 +162,11 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+if 'RENDER' in os.environ:
+    # 本番環境のメディア設定
+    MEDIA_URL = '/media/' # CloudinaryがこのURLをベースにすることがある
+else:
+    # ローカル環境のメディア設定
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
