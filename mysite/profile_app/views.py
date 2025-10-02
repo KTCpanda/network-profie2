@@ -1,37 +1,29 @@
-# profile_app/views.py
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Profile
+from .forms import ProfileForm
 
 def profile_view(request):
-    # ここにあなたの情報を直接書き込んでください！
-    my_profile = {
-        'name': 'moepanda(萌ぱんだ)',
-        'avatar_name': '萌ぱんだ',
-        'top_image_url': 'images/avatar.jpg', # 表示したい画像のパス
+    # データベースから最初のプロフィールを取得します。
+    # もしプロフィールがまだ作成されていなければ、Noneが渡されます。
+    profile = Profile.objects.first()
+    return render(request, 'profile_app/profile.html', {'profile': profile})
 
+def profile_edit_view(request):
+    # 編集対象のプロフィールを取得します。
+    # まだプロフィールが一つもなければ、新しく作成します。
+    profile, created = Profile.objects.get_or_create(pk=1)
 
-        'introduction': """
-            僕は萌ぱんだです！
-        元気があるのが僕のいいところ学校ではぱんだマンって言われてます
-        　vrchatは9/29に始めたばっかりですそのついでにvrchatでプロフィールにリンク貼れるので
-        自己紹介サイトを作ってみた感じです！
-        """,
-        'reason_for_vrc': """
-        YouTubeやTikTokでなかのっちチャンネルというYouTubeが面白く会話してたので始めました
-        今はデスクトップですがメタクエ欲しいと思ってます
-        """,
-        'hobbies': """
-            趣味は服を買ったり化粧品を買うことです
-        メイクはまだ全然手をつけてないですが肌を綺麗になるように頑張ってます
-        自分の好きな服は和装系と地雷系です
-        """,
-        'favorite_things': """
-        ゲームと人と日常会話を話すことです
-        vrchatではどっちもできるので最高です:thumbsup:
-        たまに狂ってる人いるけど…
-        """,
-        'career_goal': '目指してる仕事はまだ決まってませんがゲーム系のエンジニアになりたいです'
-    }
-    
-    # 'profile'という名前で、上の my_profile の情報をHTMLに渡します
-    return render(request, 'profile_app/profile.html', {'profile': my_profile})
+    if request.method == 'POST':
+        # 送信されたデータとファイルを使ってフォームを検証します。
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            # 保存が成功したら、プロフィールページにリダイレクトします。
+            return redirect('profile')
+    else:
+        # 通常のアクセス（GETリクエスト）の場合、
+        # 既存のプロフィール情報をフォームに表示します。
+        form = ProfileForm(instance=profile)
+
+    # フォームをテンプレートに渡して表示します。
+    return render(request, 'profile_app/profile_edit.html', {'form': form})
