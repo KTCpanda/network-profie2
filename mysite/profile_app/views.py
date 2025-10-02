@@ -1,6 +1,4 @@
 from django.shortcuts import render
-# from .models import Profile # models.py をまだ使用していないためコメントアウト
-# from .forms import ProfileForm # forms.py をまだ使用していないためコメントアウト
 
 def profile_view(request):
     # ここにあなたの情報を直接書き込んでください！
