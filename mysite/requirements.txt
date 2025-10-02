@@ -4,6 +4,7 @@ dj-database-url
 Django
 django-cloudinary-storage
 gunicorn
+Pillow
 psycopg2-binary
 python-decouple
 python-dotenv
