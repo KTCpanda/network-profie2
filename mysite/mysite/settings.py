@@ -8,10 +8,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-local-secret-key-for-development')
-DEBUG = config('DEBUG', default=True, cast=bool) # ローカル開発ではTrueをデフォルトにします
+# Render上では'RENDER'環境変数が存在するためFalseに、ローカルではTrueになります
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
-RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default=None)
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 ALLOWED_HOSTS.extend(['127.0.0.1', 'localhost'])
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages', # ★このアプリのために設定が必要です
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_app',
 ]
@@ -33,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware', # ★このアプリのために設定が必要です
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -49,7 +50,6 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                # ★★★ この一行が、エラーを解決する最後の鍵です ★★★
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -58,7 +58,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-DATABASES = {'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}", conn_max_age=600)}
+# ★★★ ここが最後の修正ポイントです ★★★
+# Render環境とローカル環境でデータベースの接続先を明確に切り分けます
+if 'RENDER' in os.environ:
+    # Render環境ではDATABASE_URL（Neon）を使用
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600)
+    }
+else:
+    # ローカル環境ではdb.sqlite3を使用
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},{'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}]
 
