@@ -2,7 +2,7 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
-    top_image = CloudinaryField('image', blank=True, null=True)
+    #top_image = CloudinaryField('image', blank=True, null=True)
     # 基本情報
     name = models.CharField("名前", max_length=100, default="名無しさん")
     vrchat_id = models.CharField("VRChat ID", max_length=100, blank=True)
