@@ -152,8 +152,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cloudinary settings
+# settings.py
 CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': os.environ.get('cloudinary://<329889248782931>:<QDyRoM4OIX8bUda2-QcZv3fhSnc>@dae86m14p')
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL') # ← Renderに設定された値を読み取るだけ
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
