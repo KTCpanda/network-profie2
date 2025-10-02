@@ -26,232 +26,61 @@
             line-height: 1.8;
             margin: 0;
             padding: 0;
-            /* ★修正点: CloudinaryのURLを直接指定 */
             background: url("https://res.cloudinary.com/dae86m14p/image/upload/static/images/VRchat_sky.jpg");
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* 背景を固定 */
+            background-attachment: fixed;
             color: var(--primary-text-color);
-            transition: background-image 0.8s ease-in-out; /* 背景切り替えアニメーション */
+            transition: background-image 0.8s ease-in-out;
         }
 
-        /* 背景切り替え用のクラス */
         body.background-changed {
-            /* ★修正点: CloudinaryのURLを直接指定 */
             background-image: url("https://res.cloudinary.com/dae86m14p/image/upload/static/images/VRchat_sky2.jpg");
         }
-        /* --- ソーシャルメディアアイコン --- */
-        .social-icons {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        .social-icon {
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 2px solid var(--accent-color);
-            position: relative;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .social-icon:hover {
-            background-color: var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-glow);
-            transform: scale(1.1);
-        }
-
-        .social-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-icon svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 24px;
-            height: 24px;
-            fill: var(--primary-text-color);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-icon:hover img {
-            opacity: 0;
-        }
-
-        .social-icon:hover svg {
-            opacity: 1;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        /* --- ヘッダー --- */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .top-image-container {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 25px var(--accent-glow); /* グローを強めに */
-        }
-
-        .top-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5em;
-            margin: 0;
-            color: var(--primary-text-color);
-            text-shadow: 0 0 15px var(--accent-glow); /* テキストグローも強化 */
-        }
-
-        .header p {
-            font-size: 1.2em;
-            color: var(--secondary-text-color);
-        }
-
-        /* --- コンテンツカード --- */
-        .card {
-            background-color: var(--card-bg-color); /* 透明なカード背景 */
-            border-radius: 25px; /* 角をさらに丸く */
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid var(--border-color); /* 境界線も明るく */
-            backdrop-filter: blur(20px); /* すりガラス効果を強く */
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4); /* 影を強調 */
-        }
-
-        .card h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .card p {
-            color: var(--primary-text-color);
-        }
-
-        .hobbies-card {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .hobbies-card:hover {
-            transform: translateY(-5px);
-        }
         
-        /* --- フッター --- */
-        .footer {
-            background-color: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border-color);
-            padding: 20px 0;
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--primary-text-color);
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-copyright {
-            margin-top: 15px;
-            color: var(--primary-text-color);
-            font-size: 0.8em;
-        }
-
-        /* --- スマートフォン対応 --- */
+        .social-icons { position: fixed; top: 20px; right: 20px; display: flex; gap: 15px; z-index: 1000; }
+        .social-icon { display: block; width: 50px; height: 50px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); border: 2px solid var(--accent-color); position: relative; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); overflow: hidden; }
+        .social-icon:hover { background-color: var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); transform: scale(1.1); }
+        .social-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transition: opacity 0.3s ease; }
+        .social-icon svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; fill: var(--primary-text-color); opacity: 0; transition: opacity 0.3s ease; }
+        .social-icon:hover img { opacity: 0; }
+        .social-icon:hover svg { opacity: 1; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .top-image-container { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 4px solid var(--accent-color); box-shadow: 0 0 25px var(--accent-glow); }
+        .top-image { width: 100%; height: 100%; object-fit: cover; }
+        .header h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5em; margin: 0; color: var(--primary-text-color); text-shadow: 0 0 15px var(--accent-glow); }
+        .header p { font-size: 1.2em; color: var(--secondary-text-color); }
+        .card { background-color: var(--card-bg-color); border-radius: 25px; padding: 30px; margin-bottom: 30px; border: 1px solid var(--border-color); backdrop-filter: blur(20px); box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4); }
+        .card h2 { font-family: 'Orbitron', sans-serif; color: var(--accent-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 0; }
+        .card p { color: var(--primary-text-color); }
+        .hobbies-card { transition: transform 0.3s ease-in-out; }
+        .hobbies-card:hover { transform: translateY(-5px); }
+        .footer { background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 20px 0; margin-top: 60px; text-align: center; }
+        .footer-content { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .footer-links a { color: var(--primary-text-color); text-decoration: none; font-size: 0.9em; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--accent-color); }
+        .footer-copyright { margin-top: 15px; color: var(--primary-text-color); font-size: 0.8em; }
         @media (max-width: 768px) {
-            .container {
-                margin: 20px auto;
-                padding: 15px;
-            }
-            .header h1 {
-                font-size: 2em;
-            }
-            .top-image-container {
-                width: 140px;
-                height: 140px;
-            }
-            .card {
-                padding: 20px;
-            }
-            .footer-links {
-                gap: 20px;
-            }
-            .footer-links a {
-                font-size: 0.8em;
-            }
+            .container { margin: 20px auto; padding: 15px; }
+            .header h1 { font-size: 2em; }
+            .top-image-container { width: 140px; height: 140px; }
+            .card { padding: 20px; }
+            .footer-links { gap: 20px; }
+            .footer-links a { font-size: 0.8em; }
         }
     </style>
 </head>
 <body>
-    <!-- ソーシャルメディアアイコン -->
     <div class="social-icons">
         <a href="https://discord.com/users/YOUR_DISCORD_ID" target="_blank" class="social-icon" title="Discord">
-            <!-- ★修正点: CloudinaryのURLを直接指定 -->
             <img src="https://res.cloudinary.com/dae86m14p/image/upload/static/images/discode.png" alt="Discord">
-            <svg viewBox="0 0 24 24">
-                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </a>
         <a href="https://twitter.com/YOUR_TWITTER_HANDLE" target="_blank" class="social-icon" title="Twitter">
-            <!-- ★修正点: CloudinaryのURLを直接指定 -->
             <img src="https://res.cloudinary.com/dae86m14p/image/upload/static/images/tori_Twitter.png" alt="Twitter">
-            <svg viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
         </a>
     </div>
 
@@ -259,15 +88,13 @@
         <header class="header">
             <div class="top-image-container">
                 {% if profile.top_image %}
-                    <!-- この部分はデータベースから読み込むため、変更しません -->
                     <img src="{{ profile.top_image.url }}" alt="トップ画像" class="top-image">
                 {% else %}
-                    <!-- ★修正点: CloudinaryのURLを直接指定 -->
                     <img src="https://res.cloudinary.com/dae86m14p/image/upload/static/images/vrchat_hatumimi.png" alt="デフォルト画像" class="top-image">
                 {% endif %}
             </div>
             <h1>{{ profile.name }}</h1>
-            <p>VRChat_ID: {{ profile.avatar_name }}</p> <!-- VRchatIDを変更するための場所 -->
+            <p>VRChat_ID: {{ profile.avatar_name }}</p>
         </header>
 
         <main>
@@ -275,24 +102,20 @@
                 <h2>ABOUT ME - 自己紹介</h2>
                 <p>{{ profile.introduction | linebreaksbr }}</p>
             </section>
-            
             <section class="card">
                 <h2>WHY I STARTED VRCHAT - VRChatを始めた理由</h2>
                 <p>{{ profile.reason_for_vrc | linebreaksbr }}</p>
             </section>
-
             <section class="card hobbies-card">
                 <a href="{% url 'profile_app:shumi' %}" style="text-decoration: none; color: inherit;">
                     <h2>HOBBIES - 趣味</h2>
                     <p>{{ profile.hobbies | linebreaksbr }}</p>
                 </a>
             </section>
-
             <section class="card" id="favorite-things">
                 <h2>FAVORITE THINGS - 好きなこと</h2>
                 <p>{{ profile.favorite_things | linebreaksbr }}</p>
             </section>
-
             <section class="card">
                 <h2>MY GOAL - 目指している仕事</h2>
                 <p>{{ profile.career_goal }}</p>
@@ -300,7 +123,6 @@
         </main>
     </div>
 
-    <!-- フッター -->
     <footer class="footer">
         <div class="footer-content">
             <nav class="footer-links">
@@ -317,11 +139,9 @@
     </footer>
 
     <script>
-        // 背景切り替え機能
         document.addEventListener('DOMContentLoaded', function() {
             const favoriteThingsSection = document.getElementById('favorite-things');
             const body = document.body;
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -331,9 +151,8 @@
                     }
                 });
             }, {
-                threshold: 0.3 // セクションの30%が表示されたら切り替え
+                threshold: 0.3
             });
-            
             observer.observe(favoriteThingsSection);
         });
     </script>
