@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_app',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +150,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Cloudinary settings
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('cloudinary://<329889248782931>:<QDyRoM4OIX8bUda2-QcZv3fhSnc>@dae86m14p')
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # mysite/settings.py の一番下に追加
 
 STATICFILES_DIRS = [
