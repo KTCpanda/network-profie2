@@ -1,5 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
     #top_image = CloudinaryField('image', blank=True, null=True)
