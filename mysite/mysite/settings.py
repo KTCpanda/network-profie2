@@ -3,17 +3,6 @@
 import os
 from pathlib import Path
 
-# SECRET_KEY
-from decouple import config
-
-# ...
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
-# ...
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -117,7 +106,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images) & Media files
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+#ローカルで画像をひょうじさせるところ
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # ユーザーがアップロードした画像を保存する場所
