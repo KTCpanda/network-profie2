@@ -38,7 +38,7 @@
         body.background-changed {
             background-image: url("{% static 'images/VRchat_sky2.webp' %}");
         }
-        
+        /*箇条書き*/
         .social-icons { position: fixed; top: 20px; right: 20px; display: flex; gap: 15px; z-index: 1000; }
         .social-icon { display: block; width: 50px; height: 50px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); border: 2px solid var(--accent-color); position: relative; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); overflow: hidden; }
         .social-icon:hover { background-color: var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); transform: scale(1.1); }
@@ -57,6 +57,8 @@
         .card p { color: var(--primary-text-color); }
         .hobbies-card { transition: transform 0.3s ease-in-out; }
         .hobbies-card:hover { transform: translateY(-5px); }
+        .favorite-card { transition: transform 0.3s ease-in-out; }
+        .favorite-card:hover { transform: translateY(-5px); }
         .footer { background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 20px 0; margin-top: 60px; text-align: center; }
         .footer-content { max-width: 800px; margin: 0 auto; padding: 0 20px; }
         .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
@@ -65,7 +67,7 @@
         .footer-copyright { margin-top: 15px; color: var(--primary-text-color); font-size: 0.8em; }
         @media (max-width: 768px) { .container { margin: 20px auto; padding: 15px; } .header h1 { font-size: 2em; } .top-image-container { width: 140px; height: 140px; } .card { padding: 20px; } .footer-links { gap: 20px; } .footer-links a { font-size: 0.8em; } }
 
-        /* --- ここからモーダル用のCSS --- */
+        /* --- ここからモーダルのCSS --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -130,7 +132,7 @@
         }
         .d-profile-body h3 { font-size: 0.8em; color: #72767d; text-transform: uppercase; margin: 0 0 10px; }
         .d-profile-body p { margin: 0; font-size: 1em; line-height: 1.6; }
-        /* --- モーダル用のCSSここまで --- */
+        /* --- モーダルのCSSここまで --- */
     </style>
 </head>
 <body>
@@ -158,7 +160,7 @@
             <section class="card"><h2>ABOUT ME - 自己紹介</h2><p>{{ profile.introduction | linebreaksbr }}</p></section>
             <section class="card"><h2>WHY I STARTED VRCHAT - VRChatを始めた理由</h2><p>{{ profile.reason_for_vrc | linebreaksbr }}</p></section>
             <section class="card hobbies-card"><a href="{% url 'profile_app:shumi' %}" style="text-decoration: none; color: inherit;"><h2>HOBBIES - 趣味</h2><p>{{ profile.hobbies | linebreaksbr }}</p></a></section>
-            <section class="card" id="favorite-things"><h2>FAVORITE THINGS - 好きなこと</h2><p>{{ profile.favorite_things | linebreaksbr }}</p></section>
+            <section class="card favorite-card" id="favorite-things"><a href="{% url 'profile_app:favorite' %}" style="text-decoration: none; color: inherit;"><h2>FAVORITE THINGS - 好きなこと</h2><p>{{ profile.favorite_things | linebreaksbr }}</p></a></section>
             <section class="card"><h2>MY GOAL - 目指している仕事</h2><p>{{ profile.career_goal }}</p></section>
         </main>
     </div>
@@ -166,7 +168,7 @@
     <footer class="footer">
         <div class="footer-content">
             <nav class="footer-links">
-                <a href="#">プライバシー</a> <a href="#">利用規約</a> <a href="#">お問い合わせ</a> <a href="#">VRChat</a> <a href="#">ゲーム開発</a>
+                <a href="#">プライバシー</a> <a href="#">利用規約</a> <a href="#">お問い合わせ</a> <a href="#">VRChat</a> <a href="#">下のやつ押しても上に戻るだけ</a>
             </nav>
             <div class="footer-copyright">© 2025 moepanda(萌ぱんだ). All rights reserved.</div>
         </div>
@@ -176,9 +178,9 @@
         <div class="discord-profile-card">
             <span id="modal-close" class="d-close-button">&times;</span>
             <div class="d-profile-header">
-                <img src="{% static 'images/discode.webp' %}" alt="Profile Picture" class="d-profile-pfp">
-                <h2 class="d-profile-name">パンダ</h2>
-                <p class="d-profile-bio">代名詞と自己紹介とステータスメッセージなぜ･･･</p>
+                <img src="{% static 'images/bo-ti-shu.webp' %}" alt="Profile Picture" class="d-profile-pfp">
+                <h2 class="d-profile-name">panda81810</h2>
+                <p class="d-profile-bio">ディスコプロフィール共有できないの不便すぎるこのサイトはpythonDjangoで作ってます</p>
             </div>
             <div class="d-profile-body">
                 <h3>自己紹介</h3>

@@ -36,3 +36,6 @@ def profile_view(request):
 
 def shumi_view(request):
     return render(request, 'profile_app/shumi.html')
+
+def favorite_view(request):
+    return render(request, 'profile_app/favorite.html')
