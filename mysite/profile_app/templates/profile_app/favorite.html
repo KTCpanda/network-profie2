@@ -27,7 +27,7 @@
             line-height: 1.8;
             margin: 0;
             padding: 0;
-            background: url("{% static 'images/asamisoro.webp' %}");
+            background: url("{% static 'images/akaminsoro.webp' %}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -59,8 +59,9 @@
         }
 
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 30px;
         }
 
@@ -72,6 +73,8 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 600px;
+            max-width: 90%;
         }
 
         .favorite-item:hover {
@@ -97,7 +100,7 @@
         }
 
         .favorite-info p {
-            color: var(--primary-text-color);
+            color: #09ce09;
             font-size: 0.95em;
         }
 
@@ -113,7 +116,7 @@
         }
 
         .back-link:hover {
-            background-color: #a192f0;
+            background-color: #2500db96;
         }
 
     </style>
@@ -127,21 +130,30 @@
 
         <main>
             <div class="gallery">
-                <!-- 好きなことアイテム 1 -->
+                <!-- 好きなこと 1 -->
                 <div class="favorite-item">
-                    <img src="{% static 'images/VRchat_sky2.webp' %}" alt="ゲームの画像" class="favorite-image">
+                    <img src="{% static 'images/gensinnkazuha.webp' %}" alt="ゲームの画像" class="favorite-image">
                     <div class="favorite-info">
-                        <h3>ゲーム</h3>
-                        <p>VRChatはもちろん、色々なゲームをプレイするのが好きです。特にオープンワールドやRPGに夢中になります。</p>
+                        <h3>原神</h3>
+                        <p>オープンワールドRPGがなんだかんだ好きですNTEや無限大ANANTAとかも楽しみです</p>
                     </div>
                 </div>
 
-                <!-- 好きなことアイテム 2 -->
+                <!-- 好きなこと 2 -->
                 <div class="favorite-item">
-                    <img src="{% static 'images/discode.webp' %}" alt="会話の画像" class="favorite-image">
+                    <img src="{% static 'images/maikurapanda.webp' %}" alt="会話の画像" class="favorite-image">
                     <div class="favorite-info">
-                        <h3>人とおしゃべり</h3>
-                        <p>VRChatやDiscordで、友達と何気ない日常会話をするのが一番の楽しみです。新しい出会いも大好きです！</p>
+                        <h3>マイクラ</h3>
+                        <p>Discordで、友達と何気ない日常会話をするのが一番の楽しみです。新しい要素も楽しい</p>
+                    </div>
+                </div>
+
+                <!-- 好きなこと 2 -->
+                <div class="favorite-item">
+                    <img src="{% static 'images/oozei.webp' %}" alt="会話の画像" class="favorite-image">
+                    <div class="favorite-info">
+                        <h3>VRchat!</h3>
+                        <p>いろんな人と雑談したりVRchat内でのゲームをして楽しんでる！</p>
                     </div>
                 </div>
             </div>
