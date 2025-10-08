@@ -18,7 +18,7 @@
             --card-bg-color: rgba(255, 255, 255, 0.1);
             --primary-text-color: #ffffff;
             --secondary-text-color: #4f0bfa;
-            --accent-color: #8c7aea;
+            --accent-color: #ff5900;
             --accent-glow: rgba(140, 122, 234, 0.7);
             --border-color: rgba(255, 255, 255, 0.2);
         }
@@ -120,9 +120,66 @@
             background-color: #2500db96;
         }
 
+        /* 音楽 */
+        .music-box {
+            position: fixed;
+            top: 150px;
+            right: 20px;
+            width: 280px;
+            padding: 20px;
+            background-color: var(--card-bg-color);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .music-box h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .music-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .music-box li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .music-box a {
+            
+            color: var(--secondary-text-color); /*青*/
+            
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .music-box a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        /* 音楽のやつ */
+
     </style>
 </head>
 <body>
+    <div class="music-box">
+        <h4>MY FAVORITE MUSIC</h4>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=..." target="_blank">曲名1 - アーティスト名</a></li>
+            <li><a href="https://www.youtube.com/watch?v=..." target="_blank">曲名2 - アーティスト名</a></li>
+            <li><a href="https://www.youtube.com/watch?v=..." target="_blank">曲名3 - アーティスト名</a></li>
+        </ul>
+    </div>
     <div class="container">
         <header class="header">
             <h1>MY FAVORITE THINGS</h1>
@@ -131,7 +188,6 @@
 
         <main>
             <div class="gallery">
-                <!-- 好きなこと 1 -->
                 <div class="favorite-item">
                     <img src="{% static 'images/gensinnkazuha.webp' %}" alt="ゲームの画像" class="favorite-image">
                     <div class="favorite-info">
@@ -140,7 +196,6 @@
                     </div>
                 </div>
 
-                <!-- 好きなこと 2 -->
                 <div class="favorite-item">
                     <img src="{% static 'images/maikurapanda.webp' %}" alt="会話の画像" class="favorite-image">
                     <div class="favorite-info">
@@ -149,7 +204,6 @@
                     </div>
                 </div>
 
-                <!-- 好きなこと 2 -->
                 <div class="favorite-item">
                     <img src="{% static 'images/oozei.webp' %}" alt="会話の画像" class="favorite-image">
                     <div class="favorite-info">

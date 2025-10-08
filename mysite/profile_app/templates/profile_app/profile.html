@@ -199,7 +199,7 @@
             <section class="card"><h2>ABOUT ME - 自己紹介</h2><p>{{ profile.introduction | linebreaksbr }}</p></section>
             <section class="card"><h2>WHY I STARTED VRCHAT - VRChatを始めた理由</h2><p>{{ profile.reason_for_vrc | linebreaksbr }}</p></section>
             <section class="card hobbies-card"><a href="{% url 'profile_app:shumi' %}" style="text-decoration: none; color: inherit;"><h2>HOBBIES - 趣味</h2><p>{{ profile.hobbies | linebreaksbr }}</p></a></section>
-            <section class="card favorite-card" id="favorite-things"><a href="{% url 'profile_app:favorite' %}" style="text-decoration: none; color: inherit;"><h2>FAVORITE THINGS - 好きなこと</h2><p>{{ profile.favorite_things | linebreaksbr }}</p></a></section>
+            <section class="card favorite-card" id="favorite-things"><a href="{% url 'profile_app:favorite' %}" style="text-decoration: none; color: inherit;"><h2>FAVORITE THINGS - 好きなこと - 好きな音楽</h2><p>{{ profile.favorite_things | linebreaksbr }}</p></a></section>
             <section class="card"><h2>MY GOAL - 目指している仕事</h2><p>{{ profile.career_goal }}</p></section>
         </main>
     </div>
